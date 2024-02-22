@@ -68,3 +68,19 @@ div {
   display: flex;
   flex-wrap: wrap;
 }
+
+.blog-image  {
+  padding-bottom: 5px;
+}
+
+.blog-description {
+  padding: 25px;
+}
+
+.blog-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 15px;
+  background-color: rgb(238, 238, 238);
+}
