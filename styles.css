@@ -1,9 +1,20 @@
 * {
-  font-family: Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
-div {
-  border: solid 2px red
+.header-link {
+  text-decoration: none;
+  color: rgb(58, 58, 58);
+  text-shadow: 1px 1px 2px black;
+}
+
+.header-link:hover{
+  color: #5289F9;
+}
+
+.selected {
+  border-bottom: 5px solid #5289F9;
+  border-radius: 10px;
 }
 
 .header-container {
@@ -15,12 +26,14 @@ div {
   position: fixed;
   background-color: rgba(255, 255, 255, 90%);
   width: 100%;
-  height: 20px;
+  height: 25px;
 }
 
 .header-logo{
-  font-size: 12px;
-  padding: 0px 5px;
+  font-size: 16px;
+  padding: 0px 4px;
+  color: #5289F9;
+  text-shadow: 1px 1px 2px black;
 }
 
 .header-nav {
@@ -39,11 +52,21 @@ div {
   margin-bottom: 0;
 }
 
+.site-description-header {
+  text-align: center;
+  margin-top: -50px;
+  font-size: 34px;
+  text-shadow: black 1px 1px 2px;
+  color: rgb(43, 43, 43);
+}
+
 .site-description {
   margin-top: -490px;
   font-size: 20px;
   padding: 80px 250px;
   min-width: 500px;
+  text-align: justify;
+  line-height: 30px;
 }
 
 .blog-section{
@@ -75,6 +98,7 @@ div {
 
 .blog-description {
   padding: 25px;
+  padding-top: 0px;
 }
 
 .blog-content {
