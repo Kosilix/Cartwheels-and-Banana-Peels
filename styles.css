@@ -1,9 +1,19 @@
 * {
   font-family: Lora, sans-serif;
+  
 }
 
-header, main {
-  background-color: rgb(238, 238, 238);
+body {
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px
+}
+
+main {
+  background: linear-gradient(0.25turn,#5289F9 25%, #E002B5, 75%, #5289F9 100%);
+  padding-top: 100px;
+  margin-top: -100px;
 }
 
 .header-link {
@@ -26,13 +36,14 @@ header, main {
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  margin: -10px;
-  margin-top: -100px;
+  margin-top: 90px;
+  margin-bottom: -5500px;
   align-items: center;
   position: fixed;
   background-color: rgba(255, 255, 255, 90%);
   width: 100%;
   height: 25px;
+  z-index: 999;
 }
 
 .header-logo{
@@ -54,6 +65,8 @@ header, main {
   width: 217vh;
   height: auto;
   margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
   border: black solid 5px;
   border-radius: 55px;
   padding: 0;
@@ -81,6 +94,8 @@ header, main {
   min-width: 500px;
   text-align: justify;
   line-height: 30px;
+  border-top: black solid 3px;
+  background-color: rgba(255, 255, 255, 85%);
 }
 
 .blog-section{
