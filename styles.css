@@ -43,8 +43,7 @@ main {
   font-family: Lora, sans-serif;
   display: flex;
   justify-content: space-between;
-  padding: 30px;
-  padding-bottom: 35px;
+  padding: 20px;
   align-items: center;
   position: fixed;
   background-color: rgba(255, 255, 255, 90%);
@@ -161,3 +160,21 @@ main {
   padding: 15px;
   background-color: rgba(238, 238, 238, 70%);
 }
+
+@media (max-width: 430px){
+  
+  .site-description {
+    padding: 40px;
+  }
+
+  .header-container {
+    padding-bottom: 35px;
+    padding-top: 30px;
+  }
+
+  .blog-section {
+    padding: 10px 2%;
+  }
+
+}
+
