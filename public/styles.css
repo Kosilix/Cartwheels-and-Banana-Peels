@@ -159,9 +159,14 @@ body {
   flex-direction: column;
   padding: 15px;
   background-color: rgba(238, 238, 238, 70%);
-  min-width: 460px;
   min-height: 700px;
   max-height: 700px;
+}
+
+@media (min-width: 500px){
+  .blog-content{
+    min-width: 460px;
+  }
 }
 
 @media (max-width: 430px){
@@ -177,6 +182,10 @@ body {
 
   .blog-section {
     padding: 10px 2%;
+  }
+
+  .blog-content {
+    max-width: 450px;
   }
 
 }
