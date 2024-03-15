@@ -159,6 +159,9 @@ body {
   flex-direction: column;
   padding: 15px;
   background-color: rgba(238, 238, 238, 70%);
+  min-width: 460px;
+  min-height: 700px;
+  max-height: 700px;
 }
 
 @media (max-width: 430px){
@@ -194,4 +197,42 @@ body {
 
 .application-paragraphs {
   text-align: justify;
+}
+
+.centered-button {
+  box-sizing: border-box;
+  width: 100vw;
+  border: solid red 2px;
+  text-align: center;
+  margin-top: 120px;
+  padding: 50px;
+
+}
+
+.big-button {
+  padding: 30px 10vw;
+  font-size: 50px;
+}
+
+.temporary {
+  text-align: center;
+  padding: 20px;
+  padding-top: 0;
+}
+
+.temporary-container {
+  display: flex;
+  margin: auto;
+}
+
+.input-d {
+  width: 350px;
+  height: 250px;
+  font-size: 20px;
+}
+
+.input-t {
+  width: 300px;
+  height: 30px;
+  font-size: 28px;
 }

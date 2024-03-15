@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/10.8.1/firebase-app-compat.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/10.8.1/firebase-auth-compat.js"></script>
+  <script defer src="/__/firebase/10.8.1/firebase-database-compat.js"></script>
+  <script defer src="/__/firebase/10.8.1/firebase-firestore-compat.js"></script>
+  <script defer src="/__/firebase/10.8.1/firebase-functions-compat.js"></script>
+  <script defer src="/__/firebase/10.8.1/firebase-messaging-compat.js"></script>
+  <script defer src="/__/firebase/10.8.1/firebase-storage-compat.js"></script>
+  <script defer src="/__/firebase/10.8.1/firebase-analytics-compat.js"></script>
+  <script defer src="/__/firebase/10.8.1/firebase-remote-config-compat.js"></script>
+  <script defer src="/__/firebase/10.8.1/firebase-performance-compat.js"></script>
+  <!-- 
+    initialize the SDK after all desired features are loaded, set useEmulator to false
+    to avoid connecting the SDK to running emulators.
+  -->
+  <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+  <title>Admin</title>
+</head>
+<header>
+  <div class="header-container" width="100%">
+    <div class="header-logo">
+      <h1>Cartwheels and Banana Peels</h1>
+    </div>
+    <div class="header-nav">
+      <div><a href="../index.html" class="header-link">Home</a></div> <div class="divider"></div>
+      <div><a href="application.html" class="header-link">Apply to be a guest</a></div> <div class="divider"></div>
+      <div><a href="https://themaverickcollective.com" target="_blank" class="header-link">Maverick Collective</a></div>
+</header>
+<body>
+  <div class="centered-button">
+    <button class="big-button" onclick="logIn()">Log In</button>
+  </div>
+  <section>
+    <div class="blog-container temporary-container">
+      <div class="blog-content">
+        <input type="file" accept="image/*" class="input-i" id="blog-image">
+        <p class="temporary">^ Image ^</p>
+        <div>
+          <input accept="audio/*" class="input-a">
+          <p class="temporary">^ Audio ^</p>
+        </div>
+        <div class="blog-description-header">
+          <input placeholder="Title here" class="input-t">
+          <p class="temporary"> ^ Title ^</p>
+        </div>
+          <div class="blog-description">
+          <textarea placeholder="Description goes here" class="input-d"></textarea>
+          </div>
+          <button onclick="postBlog()">Add to Blog</button>
+        </div>
+      </div>
+  </section>
+  <img src="">
+</body>
+
+<script src="../script.js"></script>
+<script type="module">
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-analytics.js";
+
+  const firebaseConfig = {
+
+    apiKey: "AIzaSyA1dP_GTcUJuksQWjoaX7alDvx2Ej8VQeQ",
+
+    authDomain: "test-a7598.firebaseapp.com",
+
+    projectId: "test-a7598",
+
+    storageBucket: "test-a7598.appspot.com",
+
+    messagingSenderId: "810988062526",
+
+    appId: "1:810988062526:web:9551dc8efb1688e716ce6f",
+
+    measurementId: "G-FX04JPNRQM"
+
+  };
+
+  const app = initializeApp(firebaseConfig);
+
+  const analytics = getAnalytics(app);
+
+</script>
+</html>
