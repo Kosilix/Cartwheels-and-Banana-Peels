@@ -1,11 +1,3 @@
-document.addEventListener("DOMContentLoaded", event => {
-
-  const app = firebase.app();
-  
-  const db = firebase.firestore();
-
-});
-
 let userValues = [];
 let usersName = '';
 let blogValue = '';
@@ -53,7 +45,6 @@ function initializeBlog(){
 
   db.collection("blogPosts").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-      console.log(doc.id, " => ", doc.data());
     });
   });
 }
@@ -72,11 +63,9 @@ async function waitForSize(){
     let storage = firebase.storage();
     let pathReference = storage.ref('BlogPhotos/');
     let blogHeader = document.getElementById(`blog-post-${tempLength}`).innerText;
-    console.log(blogHeader);
     tempLength += 1
     pathReference.child(`${blogHeader}.png`).getDownloadURL()
     .then((url) => {
-      console.log(url)
       let img = document.getElementById(blogHeader);
       img.setAttribute('src', url);
     });
@@ -96,7 +85,6 @@ function sendApplication(){
   let imagePathRef = storageRef.child(`Photos/${document.querySelector('.js-0-form').value}-${document.querySelector('.js-1-form').value}.png`);
 
   imagePathRef.put(new File([document.getElementById('head-shot').files[0]], imageRef)).then((snapshot) => {
-    console.log('Uploaded a file!');
   });
 
   db.collection("Applications").doc(`${document.querySelector(".js-0-form").value}-${document.querySelector(".js-1-form").value}`).set({
@@ -109,11 +97,13 @@ function sendApplication(){
     story: `${document.querySelector('.js-7-form').value}`,
     extraStory: `${document.querySelector('.js-8-form').value}`
   })
+  document.querySelector(".js-submit")
+  .innerHTML =`
+  <div class="submitted">
+    <h4 class="submitted-text">Submitted!</h4>
+  </div>
+  `
 }
-
-setTimeout(() => {
-  initializeBlog()
-}, 100)
 
 function postBlog(){
   const db = firebase.firestore();
@@ -135,9 +125,13 @@ function postBlog(){
       </div>
     </div>`
   });
-  console.log('succees');
-  console.log(db.collection("blogPosts"));
   blogLength++;
+  document.querySelector(".js-submit")
+  .innerHTML =`
+  <div class="submitted">
+    <h4 class="submitted-text">Uploaded!</h4>
+  </div>
+  `
 
 }
 
@@ -147,7 +141,6 @@ function createImage(){
   let imageRef = storageRef.child(`${imageName}.png`);
   let imagePathRef = storageRef.child(`BlogPhotos/${imageName}.png`);
   imagePathRef.put(new File([document.getElementById('blog-image').files[0]], imageRef)).then((snapshot) => {
-    console.log('Uploaded a blob or file!');
     return imageName;
   });
 }

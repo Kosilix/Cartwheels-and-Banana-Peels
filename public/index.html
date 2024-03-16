@@ -8,9 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- update the version number as needed -->
   <script defer src="/__/firebase/10.8.1/firebase-app-compat.js"></script>
-  <!-- include only the Firebase features as you need -->
   <script defer src="/__/firebase/10.8.1/firebase-auth-compat.js"></script>
   <script defer src="/__/firebase/10.8.1/firebase-database-compat.js"></script>
   <script defer src="/__/firebase/10.8.1/firebase-firestore-compat.js"></script>
@@ -34,9 +32,6 @@
         <div><a href="index.html" class="selected header-link">Home</a></div> <div class="divider"></div>
         <div><a href="pages/application.html" class="header-link">Apply to be a guest</a></div> <div class="divider"></div>
         <div><a href="https://themaverickcollective.com" target="_blank" class="header-link">Maverick Collective</a></div>
-        <!--Remove when done  -->
-        <div class="divider"></div>        
-        <div><a href="pages/admin.html" class="header-link">Admin</a></div>
         
       </div>
     </div>
@@ -69,7 +64,7 @@
   <footer>
     
   </footer>
-  <script src="script.js"></Script>
+    <script src="script.js"></Script>
     <script type="module">
 
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
@@ -101,5 +96,7 @@
     
       const analytics = getAnalytics(app);
     
+      initializeBlog()
     </script>
+
 </html>

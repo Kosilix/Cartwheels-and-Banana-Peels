@@ -45,8 +45,8 @@
   </div>
 
   <div class="application-description pad-body">
-    <h1 class="application-header">Guest Application</h1>
     <div class="application-paragraphs">
+      <h1 class="application-header">Guest Application</h1>
       <p>
         Cartwheels and Banana Peels is a podcast with a twist! Each episode is less than 10 minutes, 
         so busy women entrepreneurs can listen to quick tales about their sisters' mishaps and laugh out-loud moments in life and business. 
@@ -83,10 +83,13 @@
   </div>
 </main>
 <form class="aplication-form pad-body">
+  <div class="application-questions">
   <div class="users-name">
   <h4>Name</h4>
   <input required class="js-0-form">
   <label class="form-footer">First Name</label>
+  <br>
+  <br>
   <input required class="js-1-form">
   <label class="form-footer">Last Name</label>
 </div>
@@ -102,7 +105,7 @@
 </div>
 <div class="users-image">
   <h4>Please attach a headshot</h4>
-  <input type="file" accept="image/*" class="js-4-form" id="head-shot">
+  <input type="file" accept="image/*" class="js-4-form" required id="head-shot">
 </div>
 <div class="users-socials">
   <h4>Please share your social media links</h4>
@@ -118,14 +121,16 @@
     Please share a brief overview of your funny story. If you're unsure of what story to share, please let me know that here.
     I'll reach out to see how I can help you.
   </h4>
-  <input required class="js-7-form">
+  <textarea required class="js-7-form story"></textarea>
 </div>
 <div class="users-extra-story">
   <h4>Do you have more than one funny story you'd like to share? You can share another story to be aired on another episode, too. Give me an overview of it here. </h4>
-  <input class="js-8-form">
+  <textarea class="js-8-form story"></textarea>
 </div>
 </form>
+</div>
 <section class="application-footer pad-body">
+  <div class="application-footer-container">
   <h3>I'll review your application and get back to you soon! <br>Jaycie 🎤 🔥</h3>
 
   <p>
@@ -140,7 +145,14 @@
     You'll be a founding guest which means when people come across the podcast in the future they will likely go back and start at the beginning 
     and that means even more people listening to your episode(s). 🎉 👏
   </p>
-  <button type="submit" value="submit" class="submit-button" onclick="sendApplication()">Submit!</button>
+  <div class="js-submit">
+    <div>
+    <button type="submit" value="submit" class="submit-button" onclick="sendApplication()">Submit!</button>
+    </div>
+  </div>
+  <br>
+  
+</div>
 </section>
 </body>
   <footer>
