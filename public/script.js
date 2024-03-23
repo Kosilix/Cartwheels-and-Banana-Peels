@@ -1,20 +1,20 @@
 let userValues = [];
+let userTempName = ''
 let usersName = '';
 let blogValue = '';
 let blogLength = 0;
 let tempLength = 0;
 
+
 function logIn(){
   let provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithRedirect(provider);
-  firebase.auth()
-  .signInWithPopup(provider)
+  firebase.auth().signInWithPopup(provider)
   .then((result) => {
     /** @type {firebase.auth.OAuthCredential} */
     let credential = result.credential;
 
     let token = credential.accessToken;
-    let user = result.user;
+    user = result.user;
   }).catch((error) => {
     let errorCode = error.code;
     let errorMessage = error.message;
@@ -22,11 +22,18 @@ function logIn(){
     let credential = error.credential;
   });
   const user = firebase.auth().currentUser;
+  setTimeout(function(){
+    printUser();
+    initializeUser();
+  }, 800);
 }
 
-function printUser(){
+async function printUser(){
+  user = firebase.auth().currentUser;
+  for (i = 0; i < 30; i++){
+    user = firebase.auth().currentUser;
+  }
 
-  const user = firebase.auth().currentUser;
   if (user !== null) {
     user.providerData.forEach((profile) => {
       console.log("Sign-in provider: " + profile.providerId);
@@ -35,7 +42,15 @@ function printUser(){
       console.log("  Email: " + profile.email);
       console.log("  Photo URL: " + profile.photoURL);
     });
+  } else if (user == null){
+    document.querySelector('.centered-button').innerHTML = `Failure to validate login, Try again.`;
   }
+}
+
+function initializeUser(){
+    user.providerData.forEach((profile) => {
+      document.querySelector('.centered-button').innerHTML = `Welcome, ${profile.displayName}`;
+    });
 }
 
 function initializeBlog(){
