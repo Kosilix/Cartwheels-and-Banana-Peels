@@ -30,9 +30,6 @@ function logIn(){
 
 async function printUser(){
   user = firebase.auth().currentUser;
-  for (i = 0; i < 30; i++){
-    user = firebase.auth().currentUser;
-  }
 
   if (user !== null) {
     user.providerData.forEach((profile) => {
@@ -88,6 +85,7 @@ async function waitForSize(){
   });
 }
 }
+
 
 function collectData(formClass){
   return document.querySelector(formClass).value; 
