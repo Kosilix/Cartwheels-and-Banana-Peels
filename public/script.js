@@ -61,29 +61,38 @@ function initializeBlog(){
   });
 }
 
+const snapshotToArray = snapshot => {
+  const ret = [];
+  snapshot.forEach(childSnapshot => {
+      ret.push(childSnapshot);
+  });
+  return ret;
+};
 
 async function waitForSize(){
   const db = firebase.firestore();
-  blogLength = await db.collection('blogPosts').get().then(res => res.size);
-  for(i = 0; i < blogLength; i++){
-    let blogRef = db.collection("blogPosts").doc(`blog-post-${i}`);
-    blogRef.get().then((doc) => {
-    data = doc.data();
-    blogValue = data.html;
-    document.querySelector(".blog-row").innerHTML += blogValue;
+  db.collection("blogPosts").get().then((querySnapshot) => {
+    snapshotToArray(querySnapshot).reverse().forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        docFields = doc.data();
+        console.log(doc.id, " => ", doc.data());
+        document.querySelector(".blog-row").innerHTML += docFields.html;
 
-    let storage = firebase.storage();
-    let pathReference = storage.ref('BlogPhotos/');
-    let blogHeader = document.getElementById(`blog-post-${tempLength}`).innerText;
-    tempLength += 1
-    pathReference.child(`${blogHeader}.png`).getDownloadURL()
-    .then((url) => {
-      let img = document.getElementById(blogHeader);
-      img.setAttribute('src', url);
+        let storage = firebase.storage();
+        let pathReference = storage.ref('BlogPhotos/');
+        let blogHeader = docFields.imageName
+        pathReference.child(`${blogHeader}.png`).getDownloadURL()
+        .then((url) => {
+          let img = document.getElementById(blogHeader);
+          img.setAttribute('src', url);
+          console.log(blogHeader);
+        
     });
-  
   });
-}
+});
+
+  blogLength = await db.collection('blogPosts').get().then(res => res.size);
+  
 }
 
 
@@ -120,12 +129,12 @@ function sendApplication(){
 
 function postBlog(){
   const db = firebase.firestore();
-  createImage()
+  createImage(`blog-image-${blogLength}`)
   db.collection("blogPosts").doc(`blog-post-${blogLength}`).set({
     html: `
     <div class="blog-container">
       <div class="blog-content">
-        <img class="blog-image" height="300px" width="300px" src="EMPTY" id="${document.querySelector('.input-t').value}">
+        <img class="blog-image" height="300px" width="300px" src="EMPTY" id="blog-image-${blogLength}">
       <div>
         ${document.querySelector('.input-a').value}
       </div>
@@ -136,7 +145,8 @@ function postBlog(){
         <p>${document.querySelector('.input-d').value}</p>
         </div>
       </div>
-    </div>`
+    </div>`,
+    imageName: `blog-image-${blogLength}`
   });
   blogLength++;
   document.querySelector(".js-submit")
@@ -148,9 +158,8 @@ function postBlog(){
 
 }
 
-function createImage(){
+function createImage(imageName){
   const storageRef = firebase.storage().ref();
-  let imageName = document.querySelector('.input-t').value
   let imageRef = storageRef.child(`${imageName}.png`);
   let imagePathRef = storageRef.child(`BlogPhotos/${imageName}.png`);
   imagePathRef.put(new File([document.getElementById('blog-image').files[0]], imageRef)).then((snapshot) => {
