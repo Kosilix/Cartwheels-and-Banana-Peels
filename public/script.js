@@ -129,32 +129,42 @@ function sendApplication(){
 
 function postBlog(){
   const db = firebase.firestore();
-  createImage(`blog-image-${blogLength}`)
-  db.collection("blogPosts").doc(`blog-post-${blogLength}`).set({
-    html: `
-    <div class="blog-container">
-      <div class="blog-content">
-        <img class="blog-image" height="300px" width="300px" src="EMPTY" id="blog-image-${blogLength}">
-      <div>
-        ${document.querySelector('.input-a').value}
-      </div>
-      <div class="blog-description-header">
-        <h3 id="blog-post-${blogLength}">${document.querySelector('.input-t').value}</h3>
-      </div>
-        <div class="blog-description">
-        <p>${document.querySelector('.input-d').value}</p>
+  let docRef = db.collection("blogPosts").doc(`blog-post-${blogLength}`);
+
+  docRef.get().then((doc) => {
+    if (doc.exists) {
+        console.log(`blog-post-${blogLength} already exists!`);
+        blogLength++;
+        postBlog();
+    } else {
+        console.log("No such document!");
+        createImage(`blog-image-${blogLength}`)
+        db.collection("blogPosts").doc(`blog-post-${blogLength}`).set({
+          html: `
+          <div class="blog-container">
+            <div class="blog-content">
+              <img class="blog-image" height="300px" width="300px" src="EMPTY" id="blog-image-${blogLength}">
+            <div>
+              ${document.querySelector('.input-a').value}
+            </div>
+            <div class="blog-description-header">
+              <h3 id="blog-post-${blogLength}">${document.querySelector('.input-t').value}</h3>
+            </div>
+              <div class="blog-description">
+              <p>${document.querySelector('.input-d').value}</p>
+              </div>
+            </div>
+          </div>`,
+          imageName: `blog-image-${blogLength}`
+        });
+        document.querySelector(".js-submit")
+        .innerHTML =`
+        <div class="submitted">
+          <h4 class="submitted-text">Uploaded!</h4>
         </div>
-      </div>
-    </div>`,
-    imageName: `blog-image-${blogLength}`
+        `
+    }
   });
-  blogLength++;
-  document.querySelector(".js-submit")
-  .innerHTML =`
-  <div class="submitted">
-    <h4 class="submitted-text">Uploaded!</h4>
-  </div>
-  `
 
 }
 
